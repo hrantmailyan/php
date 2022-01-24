@@ -45,6 +45,12 @@ class PageController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'categories' => 'required',
+            'sequance' => 'integer'
+        ]);
         $page = new Page;
         $page->name = $request->input('name');
         $page->description = $request->input('description');

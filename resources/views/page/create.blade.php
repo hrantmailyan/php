@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">Name: </label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required  autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required  autofocus >
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">Description: </label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required >
+                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" name="description" required >
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             <label for="sequance" class="col-md-4 col-form-label text-md-end">Sequance: </label>
 
                             <div class="col-md-6">
-                                <input id="sequance" type="number" class="form-control @error('sequance') is-invalid @enderror" name="sequance" required >
+                                <input id="sequance" type="number" class="form-control @error('sequance') is-invalid @enderror" value="{{ old('sequance') }}" name="sequance"  >
 
                                 @error('sequance')
                                     <span class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
                                     @endforeach
                                 </select>
 
-                                @error('description')
+                                @error('categories')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
