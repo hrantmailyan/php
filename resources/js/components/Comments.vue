@@ -63,7 +63,6 @@ export default {
             }
     },
     mounted() {
-        // console.log(this.comment_id);
         axios.get("/comment/"+this.comment_id).then(response => {
             if (response.data.comments.length) {
                 this.comments = response.data.comments

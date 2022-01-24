@@ -19,24 +19,6 @@
                         </div>
                     </div>
                     <ChildComments :comments="comments" :auth="auth" @replacing="replacing" ></ChildComments>
-                    <!-- <div v-for="comment in comments" :key="comment.id" class="card-body">
-                        <div>
-                            User: {{comment.user.name}}
-                        </div>
-                        <div>
-                            Comment: {{comment.text}}
-                        </div>
-                        <div @click="getCommentId(comment)" v-if="auth">
-
-                            <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/26/000000/external-comment-chat-flatart-icons-outline-flatarticons.png"/>
-                        </div>
-                        <h6 @click="openChild(comment.id)">open</h6>
-                        <div v-if="open_child.id == comment.id">
-                            <div v-for="childs in comment.child_comments" :key="childs">
-                                {{childs.text}}
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -79,7 +61,6 @@ import axios from 'axios';
             },
             saveComment: function() {
                 axios.post("/comment",this.new_comment).then(response => {
-                    console.log(response.data.comment);
                     let comment = {
                         id: response.data.comment.id,
                         text:response.data.comment.text,
@@ -95,7 +76,6 @@ import axios from 'axios';
                 })
             },
             replacing: function(comment) {
-                console.log(comment);
                 this.replacing_comment = comment.text
                 this.new_comment.parent_id = comment.id
             }

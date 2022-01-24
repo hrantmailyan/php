@@ -73,7 +73,6 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">Categories: </label>
 
                             <div class="col-md-6">
-                            {{-- <select multiple="multiple" name="categories[]" id="sports"> --}}
                             <select class="selectpicker" name="categories[]" multiple data-live-search="true">
                                 @foreach($categories as $category)
                                 <option value="{{$category->id}}"

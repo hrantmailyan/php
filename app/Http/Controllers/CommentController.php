@@ -20,7 +20,6 @@ class CommentController extends Controller
         return response()->json(['comment' => $comments]);
     }
     public function getChilde($id) {
-        // dd($id);
         $comments = Comment::where('parent_id', $id)->with('child_comments')->with('user')->get();
         return response()->json(['comments'=> $comments]);
     }

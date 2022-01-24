@@ -52,7 +52,6 @@ export default {
                 }
             },
             getCommentId: function(comment) {
-                // console.log(comment, 1);
                 this.$emit('replacing', comment)
             }
     },
