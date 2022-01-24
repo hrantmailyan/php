@@ -30,4 +30,8 @@ class HomeController extends Controller
         $pages = Page::with('categories')->get();
         return view('welcome', compact('pages'));
     }
+    public function show_page($id) {
+        $page = Page::with('comments')->find($id);
+        return view('page.show',compact('page'));
+    }
 }

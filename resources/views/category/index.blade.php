@@ -16,12 +16,15 @@
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                           <h5 class="card-title">Name: {{$category->name}}</h5>
-                          <a href="{{ route('category.edit', $category->id) }}" class="card-link">Edit</a>
-                          <form method="POST" action="{{ route('category.destroy', $category->id) }}" >
-                            @csrf  
-                            @method('DELETE')
-                            <button type="submit" class="card-link">Destroy</a>
-                          </form>
+                          <div class="d-flex justify-content-end">
+
+                              <a class="btn btn-secondary" href="{{ route('category.edit', $category->id) }}" >Edit</a>
+                              <form method="POST" action="{{ route('category.destroy', $category->id) }}" class="ml-2" >
+                                @csrf  
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Destroy</a>
+                              </form>
+                          </div>
                         </div>
                       </div>
                     @endforeach

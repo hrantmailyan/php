@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -14,6 +15,10 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $pages = Page::with('categories')->get();
@@ -62,7 +67,7 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        $page = Page::find($id);
+        $page = Page::with('comments')->find($id);
         return view('page.show',compact('page'));
     }
 
@@ -96,7 +101,7 @@ class PageController extends Controller
         $page->save();
         if ($request->input('categories')) {
             $category = Category::whereIn('id',$request->input('categories'))->get();
-            $page->categories()->syncWithoutDetaching($category);
+            $page->categories()->sync($category);
         }
         return Redirect::to('page');
     }

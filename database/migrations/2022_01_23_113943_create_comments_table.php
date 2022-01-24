@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageCategoryTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreatePageCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_category', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->string('text');
+            $table->integer('parent_id')->default(0);
             $table->foreignId('page_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreatePageCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_category');
+        Schema::dropIfExists('comments');
     }
 }

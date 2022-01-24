@@ -34,5 +34,8 @@ class Page extends Model
             }
         });
     }
+    public function comments() {
+        return $this->hasMany(Comment::class)->where('parent_id',0)->with('child_comments')->with('user');
+    }
     
 }

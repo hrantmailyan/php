@@ -21,13 +21,18 @@
                           @foreach($page->categories as $category)
                           <span class="card-link">{{$category->name}}</span>
                           @endforeach
-                          <a href="{{ route('page.show',$page->id) }}">View</a>
-                          <a href="{{ route('page.edit', $page->id) }}" class="card-link">Edit</a>
-                          <form method="POST" action="{{ route('page.destroy', $page->id) }}" >
-                            @csrf  
-                            @method('DELETE')
-                            <button type="submit" class="card-link">Destroy</a>
-                          </form>
+                          <div class="d-flex justify-content-between">
+                            @if(auth()->user())
+                            <div class="d-flex justify-content-end">
+                                <a class="btn btn-secondary" href="{{ route('page.edit', $page->id) }}">Edit</a>
+                                <form method="POST" action="{{ route('page.destroy', $page->id) }}" class="ml-2" >
+                                    @csrf  
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Destroy</a>
+                                </form>
+                            </div>
+                            @endif
+                          </div>
                         </div>
                       </div>
                     @endforeach
